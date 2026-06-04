@@ -1,4 +1,4 @@
-# India Verified
+# PROJECT VENICE
 
 The Telegram delivery layer for **India Verified**. Reads verified posts from
 Supabase the moment they are published and broadcasts them to a Telegram
@@ -9,6 +9,8 @@ on-demand browsing and search.
 RSS / scrapers → worker → supabase.posts ─┬─ frontend (Next.js)
                                           └─ herald   (this package)
 ```
+
+---
 
 ## What it does
 
@@ -22,6 +24,8 @@ RSS / scrapers → worker → supabase.posts ─┬─ frontend (Next.js)
   `/help`
 - Idempotent deliveries via the `telegram_deliveries` unique constraint
 
+---
+
 ## Stack
 
 - Python 3.11+
@@ -30,27 +34,7 @@ RSS / scrapers → worker → supabase.posts ─┬─ frontend (Next.js)
 - [`pydantic`](https://docs.pydantic.dev/) 2.x — settings + model validation
 - [`structlog`](https://www.structlog.org/) — JSON logs in prod, pretty in dev
 
-## Quick start (dev)
-
-```bash
-cd herald
-cp example.env .env
-# edit .env with your bot token, channel id, supabase keys, topic ids
-
-pip install -e .
-python -m herald
-```
-
-## Database
-
-Herald requires migration `006_telegram_integration.sql` to be applied. It
-adds four tables (`telegram_users`, `telegram_deliveries`,
-`telegram_bookmarks`, `telegram_reactions`), two enum types, RLS policies,
-realtime publication, and a `posts_pending_channel_delivery` view.
-
-```bash
-psql "$SUPABASE_DB_URL" -f ../supabase/migrations/006_telegram_integration.sql
-```
+---
 
 ## Layout
 
@@ -77,25 +61,6 @@ herald/
 └── deploy/
     └── systemd/herald.service
 ```
+---
 
-## Deploy
-
-### Docker
-
-```bash
-docker build -t herald .
-docker run --env-file .env herald
-```
-
-### systemd (VPS)
-
-```bash
-sudo cp deploy/systemd/herald.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable --now herald
-sudo journalctl -fu herald
-```
-
-## License
-
-Same as the parent project.
+© 2026 [Zenith Open Source Projects](https://zenithopensourceprojects.vercel.app/). All Rights Reserved. Zenith is a Open Source Project Idea's by @roshhellwett
