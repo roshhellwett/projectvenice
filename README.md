@@ -1,4 +1,3 @@
-![Stars](https://img.shields.io/github/stars/roshhellwett/projectvenice?style=for-the-badge)
 ![Forks](https://img.shields.io/github/forks/roshhellwett/projectvenice?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Telegram Bot](https://img.shields.io/badge/Telegram-Bot%20API-0088cc?style=for-the-badge&logo=telegram&logoColor=white)
@@ -53,50 +52,6 @@ RSS / scrapers → worker → supabase.posts ─┬─ frontend (Next.js)
 
 ---
 
-## Project Structure
-
-```
-projectvenice/
-├── src/venice/
-│   ├── main.py                  # entrypoint
-│   ├── config.py                # pydantic Settings
-│   ├── logging_setup.py         # structured logging
-│   ├── utils/                   # hostname, time_ago, html escape
-│   ├── data/                    # supabase client + queries + models
-│   │   ├── client.py
-│   │   ├── queries.py
-│   │   └── models.py
-│   ├── render/                  # card rendering + formatting
-│   │   ├── card.py
-│   │   ├── credibility.py
-│   │   ├── sources.py
-│   │   └── bullets.py
-│   ├── bot/                     # aiogram handlers
-│   │   ├── dispatcher.py
-│   │   ├── keyboards.py
-│   │   ├── callbacks.py
-│   │   └── commands/
-│   │       ├── start.py
-│   │       ├── latest.py
-│   │       ├── categories.py
-│   │       ├── search.py
-│   │       ├── about.py
-│   │       └── help.py
-│   └── publisher/
-│       ├── scheduler.py         # token-bucket rate limiter
-│       ├── dispatch.py          # idempotent send logic
-│       ├── poller.py            # 60s safety net
-│       └── realtime.py          # supabase realtime listener
-├── tests/
-├── deploy/
-│   └── systemd/
-│       └── venice.service
-├── Dockerfile
-└── requirements.txt
-```
-
----
-
 ## How It Works
 
 ```
@@ -114,35 +69,4 @@ Supabase Realtime Listener → Deduplication Check → Rate Limiter
 
 ---
 
-## Configuration
-
-Set environment variables:
-
-```bash
-TELEGRAM_TOKEN=your_bot_token
-TELEGRAM_CHANNEL_ID=your_channel_id
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
-ENVIRONMENT=production  # or 'development'
-```
-
----
-
-## License
-
-MIT — Open source and free to use.
-
----
-
-## Transparency
-
-- Full source code available on GitHub
-- Real-time delivery tracking via database
-- Credibility scores verified from India Verified pipeline
-- All original source links preserved
-- Structured logging for complete audit trail
-
----
-
-© 2026 [Zenith Open Source Projects](https://zenithopensourceprojects.vercel.app/). All Rights Reserved.
-Zenith is an Open Source Project Idea by @roshhellwett
+© 2026 [Zenith Open Source Projects](https://zenithopensourceprojects.vercel.app/). All Rights Reserved. Zenith is an Open Source Project Idea by @roshhellwett
